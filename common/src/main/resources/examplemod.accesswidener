@@ -1,0 +1,3 @@
+accessWidener	v1	named
+
+# Widens the access of certain methods to make mixin possible.

@@ -1,0 +1,35 @@
+# The Mod TOML file for ExampleMod.
+
+modLoader="javafml" #mandatory
+loaderVersion="[47,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+
+# License Schmicense
+license="MIT"
+
+[[mods]] #mandatory
+	modId="examplemod"
+	version="${version}"
+	displayName="Example Mod"
+	displayURL="https://www.curseforge.com/minecraft/mc-mods/examplemod"
+	issueTrackerURL="https://github.com/xelbayria/examplemod/issues"
+	logoFile="logo.png" #optional
+	authors="Xelbayria" #optional
+	
+	credits="N/A" #optional
+	
+	# The description text for the mod (multi line!) (#mandatory)
+	description='''To Describe the purpose & contents of the mods adding to the Minecraft'''
+
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.examplemod]]
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[47.1.3,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.examplemod]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,)"
+    ordering="NONE"
+    side="BOTH"
