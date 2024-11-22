@@ -24,7 +24,6 @@ dependencies {
     implementation project(":common")
 }
 
-var commonAW = project(":common").file("src/main/resources/dramaticdoors.accesswidener")
 var generatedResources = file("src/generated/resources")
 
 loom {
@@ -37,23 +36,23 @@ loom {
     runs {
         client {
             client()
-            setConfigName("Minecraft Client")
+            setConfigName('Client')
             ideConfigGenerated(true)
-            runDir("run")
+            runDir('run/Client')
         }
         server {
             server()
-            setConfigName("Minecraft Server")
+            setConfigName('Server')
             ideConfigGenerated(true)
-            runDir("run")
+            runDir('run/Server')
         }
         datagen {
             inherit server
-            name "Data Generation"
-            vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${file("src/generated")}"
-            vmArg "-Dfabric-api.datagen.modid=${mod_id}"
-            runDir("build/datagen")
+            name 'Data-Generation'
+            vmArg '-Dfabric-api.datagen'
+            vmArg '-Dfabric-api.datagen.output-dir=${file("src/generated")}'
+            vmArg '-Dfabric-api.datagen.modid=${mod_id}'
+            runDir('build/datagen')
         }
     }
 }

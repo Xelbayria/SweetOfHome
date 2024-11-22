@@ -11,23 +11,28 @@ base {
 mixin {
     // Only uncomment if you need to generate the refmap. Remember to edit the refmap for the merged JAR file!
     if (!file('src/main/resources/${rootProject.mod_id}_forge.refmap.json').exists()) {
-        add(sourceSets.main, "${rootProject.mod_id}_forge.refmap.json")
+        add(sourceSets.main, "${mod_id}_forge.refmap.json")
     }
 }
 minecraft {
-    mappings channel: 'official', version: rootProject.minecraft_version
-	copyIdeResources = true //Calls processResources when in dev
-    if (project(":common").file('src/main/resources/META-INF/accesstransformer.cfg').exists()) {
-        accessTransformer = project(":common").file('src/main/resources/META-INF/accesstransformer.cfg')
+    mappings channel: 'official', version: minecraft_version
+
+    copyIdeResources = true //Calls processResources when in dev
+
+    // Automatically enable forge AccessTransformers if the file exists
+    // This location is hardcoded in Forge and can not be changed.
+    // https://github.com/MinecraftForge/MinecraftForge/blob/be1698bb1554f9c8fa2f58e32b9ab70bc4385e60/fmlloader/src/main/java/net/minecraftforge/fml/loading/moddiscovery/ModFile.java#L123
+    if (file('src/main/resources/META-INF/accesstransformer.cfg').exists()) {
+        accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     }
+
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/Client')
             ideaModule "${rootProject.name}.${project.name}.main"
-            taskName 'Minecraft Client'
+            taskName 'Client'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-			arg "-mixin.config=" + "ceilands_forge.mixins.json"
             mods {
                 modClientRun {
                     source sourceSets.main
@@ -37,12 +42,11 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/Server')
             ideaModule "${rootProject.name}.${project.name}.main"
-            taskName 'Minecraft Server'
+            taskName 'Server'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-			arg "-mixin.config=" + "examplemod_forge.mixins.json"
             mods {
                 modServerRun {
                     source sourceSets.main
@@ -55,7 +59,7 @@ minecraft {
             workingDirectory project.file('run')
             ideaModule "${rootProject.name}.${project.name}.main"
             args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-            taskName 'Data Generation'
+            taskName 'Data-Generation'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             mods {
