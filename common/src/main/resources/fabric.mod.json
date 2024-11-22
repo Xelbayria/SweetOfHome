@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "mod_id",
   "version": "${version}",
 
   "name": "Example Mod (QuiFabrge)",
   "description": "To describe the purpose & contents of the mod adding to the Minecraft",
   "authors": [
-    "Kitteh6660"
+    "Xel'Bayria"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/examplemod",
     "sources": "https://github.com/xelbayria/ExampleMod"
   },
 
-  "license": "MIT",
+  "license": "${license}",
   "icon": "icon.png",
 
   "environment": "*",
