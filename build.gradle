@@ -15,12 +15,12 @@ forgix {
 	forge {
 		projectName = "forge"
 		jarLocation = "build/libs/forge.jar"
-		additionalRelocate("net.xelbayria.examplemod", "net.xelbayria.examplemod.forge")
+		additionalRelocate("net.xelbayria.sweetofhome", "net.xelbayria.sweetofhome.forge")
 	}
 	fabric {
 		projectName = "fabric"
 		jarLocation = "build/libs/fabric.jar"
-		additionalRelocate("net.xelbayria.examplemod", "net.xelbayria.examplemod.fabric")
+		additionalRelocate("net.xelbayria.sweetofhome", "net.xelbayria.sweetofhome.fabric")
 	}
 }
 

@@ -1,9 +1,9 @@
-package com.xelbayria.examplemod.fabric;
+package com.xelbayria.sweetofhome.fabric;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 
-public class ExampleModFabric implements ModInitializer
+public class SweetOfHomeFabric implements ModInitializer
 {
 	@Override
 	public void onInitialize() {
